@@ -1,0 +1,17 @@
+
+<ul nz-menu [nzMode]="'inline'">
+    <li nz-submenu *ngFor="let level_1 of menu">
+        <span title><i class="anticon anticon-mail"></i>{{level_1.name}}</span>
+        <ul *ngIf="level_1.children">
+            <li nz-menu-group *ngFor="let level_2 of level_1.children">
+                <a title 
+                    (click)="toNav(level_1.key); 
+                    $event.stopPropagation()"
+                    routerLink="/{{level_2.key}}" >{{level_2.name}}</a>
+                <ul *ngIf="level_2.children">
+                    <li nz-menu-item *ngFor="let level_3 of level_2.children">{{level_3.name}}</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
